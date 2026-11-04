@@ -15,6 +15,16 @@
 
 ---
 
+## 📸 Screenshots
+
+### Cleaning in Progress (Popup Modal)
+![Cleaning in Progress](screenshots/modal-cleaning.jpg)
+
+### Live In-Page Automation & Floating Widget
+![Live Automation & Floating Widget](screenshots/comments-widget.png)
+
+---
+
 ## 🛠️ How to Install & Run in Developer Mode
 
 You can load and test this extension in Google Chrome, Brave, Arc, or any Chromium-based browser without publishing it.
@@ -84,6 +94,9 @@ Chrome extensions consist of three isolated environments, each with its own cons
 
 ```
 YourCleanHelpTool/
+├── screenshots/        # Extension screenshots for documentation
+│   ├── modal-cleaning.jpg
+│   └── comments-widget.png
 ├── manifest.json       # Manifest V3 extension configuration & permissions
 ├── background.js       # Background service worker (lifecycle & storage sync)
 ├── content.js          # In-page automation engine & floating UI widget
