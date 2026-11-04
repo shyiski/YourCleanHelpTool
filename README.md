@@ -31,7 +31,7 @@ You can load and test this extension in Google Chrome, Brave, Arc, or any Chromi
    * **Update**
 
 ### Step 3: Load the Unpacked Extension
-1. Click **"Load unpacked"** (Загрузить распакованное).
+1. Click **"Load unpacked"**.
 2. Select the `YourCleanHelpTool` folder containing `manifest.json`.
 3. The extension is now installed! You will see **YourCleanHelpTool: Activity Cleaner** in your extensions list.
 
