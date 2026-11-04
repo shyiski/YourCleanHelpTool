@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Archives & Builds
+*.zip
+*.crx
+
+# Logs & temp
+*.log

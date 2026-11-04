@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Dark Body Gradient -->
+    <linearGradient id="dark-handle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14161D" />
+      <stop offset="40%" stop-color="#282C37" />
+      <stop offset="70%" stop-color="#1E212A" />
+      <stop offset="100%" stop-color="#0F1015" />
+    </linearGradient>
+
+    <!-- Dark Bristles Base -->
+    <linearGradient id="dark-bristles" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1C1E26" />
+      <stop offset="60%" stop-color="#241B2E" />
+      <stop offset="100%" stop-color="#3B1435" />
+    </linearGradient>
+
+    <!-- Vibrant Instagram Accent Gradient -->
+    <linearGradient id="ig-vibrant" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF543E" />
+      <stop offset="50%" stop-color="#E1306C" />
+      <stop offset="100%" stop-color="#9B30FF" />
+    </linearGradient>
+
+    <!-- Gold Accent -->
+    <linearGradient id="gold-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" />
+      <stop offset="100%" stop-color="#FFA500" />
+    </linearGradient>
+
+    <!-- Subtle outer contrast shadow filter for crisp visibility on light toolbars -->
+    <filter id="crisp-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#crisp-shadow)">
+    <!-- Sparkle Stars (Thick, bright accents) -->
+    <!-- Star 1 (Top-Right) -->
+    <path d="M 390 80 Q 390 115 355 115 Q 390 115 390 150 Q 390 115 425 115 Q 390 115 390 80 Z" 
+          fill="url(#ig-vibrant)" />
+    <!-- Star 2 (Left) -->
+    <path d="M 80 270 Q 80 295 55 295 Q 80 295 80 320 Q 80 295 105 295 Q 80 295 80 270 Z" 
+          fill="url(#gold-accent)" />
+    <!-- Star 3 (Bottom-Right) -->
+    <path d="M 370 420 Q 370 440 350 440 Q 370 440 370 460 Q 370 440 390 440 Q 370 440 370 420 Z" 
+          fill="url(#ig-vibrant)" />
+
+    <!-- Rotated Broom Group: Center (256, 256), Angle -45 deg -->
+    <g transform="translate(256, 256) rotate(-45) translate(-256, -256)">
+      <!-- Thick Handle -->
+      <rect x="220" y="24" width="72" height="240" rx="36" fill="url(#dark-handle)" stroke="#111318" stroke-width="4"/>
+      <!-- Inner handle highlight for 3D depth -->
+      <rect x="238" y="36" width="16" height="216" rx="8" fill="#FFFFFF" opacity="0.12"/>
+      
+      <!-- Hanging Hole -->
+      <circle cx="256" cy="62" r="14" fill="#0D0E12"/>
+      <circle cx="256" cy="62" r="8" fill="none" stroke="#2E3340" stroke-width="3"/>
+
+      <!-- Ferrule / Metal Band (Instagram Gradient) -->
+      <rect x="188" y="244" width="136" height="42" rx="12" fill="url(#ig-vibrant)" stroke="#111318" stroke-width="3"/>
+      <rect x="194" y="258" width="124" height="6" rx="3" fill="#FFFFFF" opacity="0.4"/>
+
+      <!-- Bristle Cap -->
+      <path d="M 196 284 L 316 284 L 344 340 L 168 340 Z" fill="#1C1E26"/>
+
+      <!-- Thick Bristles Body -->
+      <path d="M 168 340 
+               L 344 340 
+               C 368 390 392 440 396 462
+               C 398 476 386 486 372 486
+               L 140 486
+               C 126 486 114 476 116 462
+               C 120 440 144 390 168 340 Z" 
+            fill="url(#dark-bristles)" 
+            stroke="#111318" 
+            stroke-width="5"/>
+
+      <!-- Bristle Texture Cut Grooves (Vibrant IG Gradient) -->
+      <path d="M 182 344 L 160 478" stroke="url(#ig-vibrant)" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 218 344 L 206 482" stroke="url(#ig-vibrant)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M 256 344 L 256 484" stroke="#FFA500" stroke-width="8" stroke-linecap="round"/>
+      <path d="M 294 344 L 306 482" stroke="url(#ig-vibrant)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M 330 344 L 352 478" stroke="url(#ig-vibrant)" stroke-width="7" stroke-linecap="round"/>
+
+      <!-- Bottom Bristle Trim Edge Accent -->
+      <path d="M 136 480 C 188 492 324 492 376 480" stroke="url(#ig-vibrant)" stroke-width="7" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
+</svg>

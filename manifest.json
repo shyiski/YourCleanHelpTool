@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "YourCleanHelpTool: Activity Cleaner",
+  "short_name": "YourCleanHelpTool",
+  "version": "1.0.0",
+  "description": "Bulk clean your comments, likes, and story replies on social web.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["logo.png", "broom-icon.png"],
+      "matches": ["https://www.instagram.com/*"]
+    }
+  ]
+}

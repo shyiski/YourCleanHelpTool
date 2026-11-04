@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YourCleanHelpTool</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F4F6F9;
+      --bg-card: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --card-hover-border: rgba(225, 48, 108, 0.35);
+      --text-primary: #1C1E21;
+      --text-secondary: #596273;
+      --text-muted: #8E99A8;
+      --accent: #E1306C;
+      --accent-gradient: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #FD1D1D 100%);
+      --accent-dim: rgba(225, 48, 108, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
+      --header-bg: #FFFFFF;
+      --header-border: rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark-mode {
+      --bg: #0B0E14;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(225, 48, 108, 0.45);
+      --text-primary: #F0F4F8;
+      --text-secondary: rgba(240, 244, 248, 0.7);
+      --text-muted: rgba(240, 244, 248, 0.4);
+      --accent: #E1306C;
+      --accent-dim: rgba(225, 48, 108, 0.15);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+      --header-bg: #11141C;
+      --header-border: rgba(255, 255, 255, 0.06);
+    }
+
+    body {
+      width: 380px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* Header */
+    .header {
+      padding: 14px 20px;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--header-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(225, 48, 108, 0.3));
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .theme-toggle-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--card-hover-border);
+      transform: scale(1.08) rotate(15deg);
+    }
+
+    /* Main Container */
+    .container {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Action Grid 2 columns x 3 rows */
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      gap: 10px;
+    }
+
+    /* Grid cards base */
+    .grid-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 10px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left column: Navigation Links */
+    .grid-link {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .grid-link:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Right column: Action Buttons */
+    .grid-action {
+      background: var(--accent-gradient);
+      border: none;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+    }
+
+    .grid-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(225, 48, 108, 0.45);
+    }
+
+    .grid-action:active, .grid-link:active {
+      transform: translateY(0);
+    }
+
+    .grid-action:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .btn-icon {
+      font-size: 1.35rem;
+      margin-bottom: 5px;
+      line-height: 1;
+    }
+
+    .btn-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      text-align: center;
+    }
+
+    /* Notification message */
+    .notice {
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      text-align: center;
+      display: none;
+      background: rgba(225, 48, 108, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(225, 48, 108, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 12px 18px;
+      text-align: center;
+      border-top: 1px solid var(--header-border);
+      font-size: 0.64rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="brand">
+      <img src="broom-icon.png" alt="YourCleanHelpTool" class="brand-logo">
+      <span class="brand-title">YourCleanHelpTool</span>
+    </div>
+    <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle theme">☀️</button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <!-- Alert / Message Box -->
+    <div class="notice" id="noticeBox"></div>
+
+    <!-- 2 Columns x 3 Rows Grid -->
+    <div class="action-grid">
+      <!-- Row 1: Likes -->
+      <a href="https://www.instagram.com/your_activity/interactions/likes" target="_blank" class="grid-btn grid-link" id="openLikesBtn">
+        <span class="btn-icon">❤️</span>
+        <span class="btn-title">Open Likes</span>
+      </a>
+      <button class="grid-btn grid-action" id="startLikesBtn">
+        <span class="btn-icon">▶️</span>
+        <span class="btn-title">Start Unlike</span>
+      </button>
+
+      <!-- Row 2: Comments -->
+      <a href="https://www.instagram.com/your_activity/interactions/comments" target="_blank" class="grid-btn grid-link" id="openCommentsBtn">
+        <span class="btn-icon">💬</span>
+        <span class="btn-title">Open Comments</span>
+      </a>
+      <button class="grid-btn grid-action" id="startCommentsBtn">
+        <span class="btn-icon">▶️</span>
+        <span class="btn-title">Start Delete</span>
+      </button>
+
+      <!-- Row 3: Story Replies -->
+      <a href="https://www.instagram.com/your_activity/interactions/story_replies" target="_blank" class="grid-btn grid-link" id="openRepliesBtn">
+        <span class="btn-icon">📨</span>
+        <span class="btn-title">Open Replies</span>
+      </a>
+      <button class="grid-btn grid-action" id="startRepliesBtn">
+        <span class="btn-icon">▶️</span>
+        <span class="btn-title">Start Delete</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    YourCleanHelpTool is an independent tool.<br>
+    Not affiliated with Instagram or Meta Platforms, Inc.
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
